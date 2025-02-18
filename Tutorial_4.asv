@@ -1,0 +1,60 @@
+%Tutorial 4
+
+%Task 1
+
+Fs = 44100;
+freq = 1;
+dur = 1;
+Ts = 1/Fs;
+t = 0:Ts:dur;
+A = 1;
+sineWave = A * sin(2*pi*freq.*t);
+sineLength = length(sineWave);
+clip = sineWave;
+for i=1:sineLength
+    if (sineWave(i) > 0.5)
+        clip(i) = 0.5;
+    end
+    if (sineWave(i) < -0.5)
+        clip(i) = -0.5;
+    end
+end
+plot(clip), axis([1, sineLength, -1, 1]); grid on;
+title('Sine Wave clipping')
+
+%%
+
+%Task 2
+
+clip2 = sineWave;
+
+for i = 1:sineLength
+    if (sineWave(i) < -0.1)
+        clip2(i) = -0.1;
+    end
+end
+plot(clip2), axis([1, sineLength, -1, 1]); grid on; hold off
+
+%%
+%Task 3
+%clipper function accepts 3 inputs
+%clipSig = clipper(freq, clipType, threshold)
+%freq = frequency of signal
+%clipType: 1 = symmetrical clipping, 2 = asymmetrical negative clipping
+%3 = asymmetrical positive clipping
+%threshold = threshold of clipping
+freq = 220;
+threshold = 0.5;
+clipType = 1;
+clip1 = clipper(freq, clipType, threshold);
+clipType = 2;
+clip2 = clipper(freq, clipType, threshold);
+clipType = 3;
+clip3 = clipper(freq, clipType, threshold);
+
+%%
+
+%Task 4
+
+
+
