@@ -1,0 +1,16 @@
+%Tutorial 6
+NoiseFs = 22050;
+NoiseDur = 2;
+Noise = randn(NoiseFs*NoiseDur,1);
+sound(Noise,NoiseFs)
+%%
+a = 1;
+b = Hd.numerator;
+stem(b);
+newnoise1 = conv(Noise,b);
+newnoise2 = filter(Hd,Noise);
+length1 = size(newnoise1);
+length2 = size(newnoise2);
+%%
+%Task 1
+
