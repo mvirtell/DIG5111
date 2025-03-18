@@ -1,0 +1,41 @@
+%Tutorial 8
+
+%b = f0*sinc(f0*(-n:n)); %windowed-sinc filter with cut-off freq f0
+%b stores filter coefficients, filter length is 2n+1
+
+%Truncated sinc function with 61 pints, cutoff freq 500 Hz, sampling freq
+%2000 Hz
+
+n = 30;
+fs = 2000;
+fn = fs/2;
+f0 = 500/fn;
+b = f0*sinc(f0*(-n:n));
+
+%%
+%Tasks
+%1
+n = 30;
+fs = 4000;
+fn = fs/2;
+f0 = 300/fn;
+b = f0*sinc(f0*(-n:n));
+plot(b)
+fvtool(b)
+%%
+%2
+n = 30;
+fs = 4000;
+fn = fs/2;
+f01 = 800/fn;
+b1 = f01*sinc(f01*(-n:n));
+f02 = 150/fn;
+b2 = f02*sinc(f02*(-n:n));
+filt = conv(b1,b2);
+plot(filt)
+fvtool(filt)
+%%
+%3
+filtw = filt.*hamming(61);
+fvtool(filtw)
+
