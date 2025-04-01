@@ -41,4 +41,4 @@ f = fftsig(signal, 8000);
 
 %%
 %Task 3
-spectrogram(signal,128,120,128)
+spectrogram(signal,hann(512),256,512,8000,'yaxis')
